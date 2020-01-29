@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="login-page">
+  <div class="form">
+    <form class="login-form" action="/login" method="POST">
+      <input type="text" name="username" placeholder="username"/>
+      <input type="password" name="pass" placeholder="password"/>
+      <input type="Submit" value="LOG IN" class="sub">
+    </form>
+  </div>
+</div>
+<div style="padding-top: 170px;"></div>
+<footer style="background-color: #383838; padding-top: 50px; padding-bottom: 50px; text-align: right;">
+  <p style="color: white; padding-right: 200px;">טל': 052-4627274</p>
+  <a href=""></a>
+</footer>
+{% endblock %}

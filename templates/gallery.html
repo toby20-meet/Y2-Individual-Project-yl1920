@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+<style type="text/css">
+	* {
+  box-sizing: border-box; 
+}
+
+body {
+  margin: 0;
+   background-color: #6d6d6d;
+  font-family: ;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+}
+
+.column img {
+  margin-top: 12px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+<div class="parallax" style="margin-bottom: 100px;"><center style="padding-top: 40px; color: white;"><h1 style="font-size: 100px;">גלריה</h1></center></div>
+<!-- Header -->
+
+<!-- Photo Grid -->
+<div class="row">
+	<div class="col-3">
+		{% for i in images1 %}
+  			<img src="../static/images/{{i}}" style="width:100%; margin-bottom: 20px;">
+  		{%endfor%}
+	</div>
+  	<div class="col-3">
+		{% for i in images2 %}
+  			<img src="../static/images/{{i}}" style="width:100%;  margin-bottom: 20px;">
+  			<br>
+  		{%endfor%}
+	</div>
+	<div class="col-3">
+		{% for i in images3 %}
+  			<img src="../static/images/{{i}}" style="width:100%;  margin-bottom: 20px;">
+  		{%endfor%}
+	</div>
+	<div class="col-3">
+		{% for i in images4 %}
+  			<img src="../static/images/{{i}}" style="width:100%; margin-bottom: 20px;">
+  		{%endfor%}
+	</div>
+  
+</div>
+<div style="padding-top: 110px;"></div>
+<footer style="background-color: #383838; padding-top: 50px; padding-bottom: 50px; text-align: right;">
+  <p style="color: white; padding-right: 200px;">טל': 052-4627274</p>
+  <a href=""></a>
+</footer>
+{% endblock %}

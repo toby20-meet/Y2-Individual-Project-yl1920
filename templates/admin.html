@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% block content %}
+<center style="margin-top:100px">
+<button onclick="myFunction()">Add Student</button>
+<button onclick="myFunction2()">All Students</button>
+<button onclick="myFunction3()">Add Photo</button>
+<button onclick="myFunction4()">All Photos</button>
+</center>
+<!-- ADDING STUDENT -->
+<div id="Add" style="display: none;">
+  <h3 style="margin-left: 45%">Add Student</h3>
+  <div class="row">
+  	<div class="col-4"> </div>
+  	<div class="col-4">
+  <form action="/admin" method="POST" style="margin-left: 20px">
+    <input type="text" name="new_name" placeholder="Name">
+    <input type="text" name="new_phone_number" placeholder="Phone Number">
+    <input type="text" name="new_parent_phone_number" placeholder="Parent's Phone Number">
+    <input type="hidden" name='submition' value="add_s">
+    <input type="submit" name='submition1' value="add S">
+  </form>
+</div>
+</div>
+</div>
+<!-- END -->
+
+<!-- EDITING STUDENTS -->
+<style type="text/css">
+	td{
+		text-align: center;
+	}
+	.border_left{
+		border-right: 2px solid #6d6d6d;
+	}
+	.seeable{
+		color: black;
+	}
+</style>
+<center>
+<div id ="StudentList" style="display: none; width: 70%; margin-top: 100px; background-color: white;">
+	<table>
+		<tr style="background-color: #3a5baf; color: white;">
+			<th class="border_left">Commands</th>
+			<th>Student Name</th>
+			<th>Student Number</th>
+			<th>Student Parent Number</th>
+		</tr>
+		{%for i in pn%}
+		<tr>
+			<td class="border_left">
+				<p>Edit Student</p>
+				<form action="/admin" method="POST" style="margin-left: 20px">
+        <select name="types" style="display: block">
+          <option value="name">Name</option>
+          <option value="phone_number">Phone Number</option>
+          <option value="parent_phone_number">Parent's Number</option>
+        </select>
+        <input class="seeable" type="text" name="new_value" placeholder="New Value">
+        <br>
+        <input type="hidden" name="student_id" value="{{i.Id}}">
+        <input type="hidden" name='submition' value="edit_s">
+        <input type="submit" name='submition2' value="Edit Student">
+      </form>
+        <br>
+        <br>
+      <form action="/admin" method="POST" style="margin-left: 20px">
+      	<input type="hidden" name="s_id" value="{{i.Id}}">
+        <input type="hidden" name='submition' value="del_s">
+        <input type="submit" name='submition15' value="Delete Student">
+      </form>
+			</td>
+			<td>{{i.name}}</td>
+			<td>{{i.phone_number}}</td>
+			<td>{{i.parent_phone_number}}</td>
+		</tr>
+		{%endfor%}
+	</table>
+</div>
+</center>
+  <!-- END -->
+
+  <!-- ADD PHOTOS -->
+  <div id ="photos" style="display: none;">
+    <div class="row" style="padding-top: 100px;">
+    	<div class="col-4"></div>
+    	<div class="col-4">
+    		<!-- 
+    <form action="/admin" method="POST" style="margin-left: 20px">
+      <input type="text" name="location" placeholder="Photo Url">
+      <input type="hidden" name='submition' value="add_p">
+      <input type="submit" name='submition1' value="Add P">
+    </form>
+     -->
+    <form action="/admin" method="POST" enctype="multipart/form-data" style="margin-left: 20px">
+  		Select images: <input type="file" name="img[]" multiple ="">
+  		<input type="hidden" name='submition' value="add_p">
+      	<input type="submit" name='submition1' value="Add P">
+	</form>
+	
+</div>
+  </div>
+</div>
+  <!-- END -->
+
+  <!-- PHOTO LIST -->
+<div id ="photo_adder" style="display: none;">
+  <div class="row">
+      <div class="col-3"></div>
+      <div class="col-3"> <h3> Commands </h3> </div>
+      <div class="col-6"> <h3> Photo Info</h3> </div>
+    </div>
+
+    {%for i in pl %}
+    <div class="row">
+    <form action="/admin" method="POST" style="margin-left: 20px">
+    <div class="col-3"></div>
+    <div class="col-3">
+        <input type="hidden" name="photo_id" value="{{i.Id}}">
+        <input type="hidden" name='submition' value="del_p">
+        <input type="submit" name='submition50' value="del P">
+    </div>
+	</form>
+    <div class="col-6">
+    	<img src="{{i.photo_location}}">
+    </div>
+	</div>
+    {%endfor%}
+  </div>
+  <!-- END -->
+
+{% endblock %}
