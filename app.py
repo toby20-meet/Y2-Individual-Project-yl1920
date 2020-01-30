@@ -100,4 +100,5 @@ def admin():
 		return render_template('admin.html',pn = student_names,pl = photos)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+	app.debug = True
+	app.run(debug=True)
