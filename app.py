@@ -5,7 +5,7 @@ import os
 from werkzeug import secure_filename
 import shutil
 from signal import signal, SIGPIPE, SIG_DFL
-signal(SIGPIPE,SIG_DFL) 
+#signal(SIGPIPE,SIG_DFL) 
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'super-secret-key'
