@@ -36,6 +36,7 @@ def gallery():
 	longitude = len(images)
 	if longitude%4 == 0:
 		portion = longitude/4
+		portion = int(portion)
 		l1 = images[0:portion]
 		l2 = images[portion:portion*2]
 		l3 = images[portion*2:portion*3]
